@@ -5,6 +5,7 @@ import Logon from './pages/Logon';
 import Register from './pages/Register';
 import Profile from './pages/Profile';
 import NewAd from './pages/NewAd';
+import Ads from './pages/Ads';
 
 export default function Routes(){
     return (
@@ -14,6 +15,7 @@ export default function Routes(){
                 <Route path="/register" component={Register}/>
                 <Route path="/profile" component={Profile}/>
                 <Route path="/ads/new" component={NewAd}/>
+                <Route path="/ads" component={Ads}/>
             </Switch>
         </BrowserRouter>
     );
