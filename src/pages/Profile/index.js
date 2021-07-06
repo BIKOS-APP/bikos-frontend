@@ -10,7 +10,7 @@ import logoImg from '../../assets/logo.png';
 
 export default function Profile(){
     const [ads, setAds] = useState([])
-    const [users, setUsers] = useState([])
+    const [user, setUser] = useState([])
 
     const userId = localStorage.getItem('userId');
     const userName = localStorage.getItem('userName');
@@ -23,7 +23,7 @@ export default function Profile(){
                 Authorization: userId
             }
         }).then(response => {
-            setUsers(response.data)
+            setUser(response.data)
         })
     }, [userId]);
 
@@ -62,7 +62,7 @@ export default function Profile(){
                 <img src={logoImg} alt="Be The Hero"/>
                 <span>Bem vindo, {userName}</span>
                 <Link className="button" to='/announcements'>Quero prestar serviços</Link>
-                <Link className="button" to='/announcements/new'>Cadastrar novo anuncio</Link>
+                <Link className="button" to='/ads/new'>Cadastrar novo anuncio</Link>
                 <button onClick={handleLogout} type="button">
                     <FiPower size={18} color="#E02041"/>
                 </button>
@@ -71,9 +71,9 @@ export default function Profile(){
             <h1>Seus Dados</h1>
 
             <ul>
-                <li key={users.id}>
+                <li key={user.id}>
                     <strong>Name</strong>
-                    <p>{users.name}</p>
+                    <p>{user.name}</p>
                 </li>
             </ul>
 
