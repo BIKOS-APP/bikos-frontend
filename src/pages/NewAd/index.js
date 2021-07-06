@@ -4,6 +4,7 @@ import { FiArrowLeft } from 'react-icons/fi';
 import logoImg from '../../assets/logo.png';
 import './styles.css';
 import api from '../../services/api';
+const axios = require('axios');
 
 export default function NewAd(){
     const [title, setTitle] = useState('');
@@ -15,6 +16,23 @@ export default function NewAd(){
     const userId = localStorage.getItem('userId');
 
     const history = useHistory();
+
+    async function onBlurCep(ev){
+        try {
+            const {value} = ev.target;
+
+            const cep = value?.replace(/[^0-9]/g, '');
+
+           await axios.get(`https://viacep.com.br/ws/${cep}/json/`)
+                .then((res) => { 
+                    setCity(res.data.localidade)
+                    setState(res.data.uf)
+                })
+        } catch (error) {
+            console.log(error);
+        }
+        
+    }
 
     async function handleNewAd(e){
         e.preventDefault();
@@ -53,7 +71,12 @@ export default function NewAd(){
                         Voltar para home
                     </Link>
                 </section>
-                <form onSubmit={handleNewAd}>
+                <form onSubmit={handleNewAd}
+                        initialValues={{
+                            city: '',
+                            state: '',
+                          }}
+                >
                     <input 
                     placeholder="Titulo do anúncio"
                     value={title}
@@ -65,14 +88,22 @@ export default function NewAd(){
                     onChange={e => setDescription(e.target.value)}
                     />
                     <input 
+                    placeholder="CEP"
+                    onBlur={(ev) => onBlurCep(ev)}
+                    />
+                    <input 
                     placeholder="Cidade"
+                    name="city"
                     value={city}
                     onChange={e => setCity(e.target.value)}
+                    disabled
                     />
                     <input 
                     placeholder="Estado"
+                    name="state"
                     value={state}
                     onChange={e => setState(e.target.value)}
+                    disabled
                     />
                     <input 
                     placeholder="Categoria"
