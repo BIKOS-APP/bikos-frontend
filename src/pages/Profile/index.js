@@ -10,6 +10,7 @@ import logoImg from '../../assets/logo.png';
 
 export default function Profile(){
     const [ads, setAds] = useState([])
+    const [candidates, setCandidates] = useState([])
     const [user, setUser] = useState([])
 
     const userId = localStorage.getItem('userId');
@@ -23,9 +24,11 @@ export default function Profile(){
                 Authorization: userId
             }
         }).then(response => {
+            console.log(response)
             setUser(response.data)
+            console.log(user)
         })
-    }, [userId]);
+    }, []);
 
 
     useEffect(() => {
@@ -71,10 +74,16 @@ export default function Profile(){
             <h1>Seus Dados</h1>
 
             <ul>
-                <li key={user.id}>
+                {user.map( u => (
+                <li key={u.id}>
                     <strong>Name</strong>
-                    <p>{user.name}</p>
+                    <p>{u.name}</p>
+                    <strong>Email</strong>
+                    <p>{u.email}</p>
+                    <strong>Whatsapp</strong>
+                    <p>{u.whatsapp}</p>
                 </li>
+                ))}              
             </ul>
 
             <h1>Seus anúncios</h1>
