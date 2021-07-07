@@ -7,6 +7,7 @@ import api from '../../services/api';
 import './styles.css';
 
 import logoImg from '../../assets/logo.png';
+import axios from 'axios';
 
 export default function Profile(){
     const [ads, setAds] = useState([])
@@ -17,7 +18,7 @@ export default function Profile(){
     useEffect(() => {
         api.get('/announcements',{
             headers:{
-                Authorization: userId,
+                'Authorization': userId,
             }
         }).then(response => {
             setAds(response.data)
@@ -26,14 +27,17 @@ export default function Profile(){
 
     async function handleApplyCandidate(id){
         try {
-            await api.post(`/announcements/${id}/candidates/apply`,{
-             headers:{
-                 Authorization: userId,
-             }  
-            });
-            setAds(ads.filter(ad => ad.id !== id))
+            console.log(userId)
+            await axios.create({
+                baseURL : 'http://localhost:3333',
+                headers: {'Authorization': userId}
+            }).post(`/announcements/${id}/candidates/apply`)
+            .then(response => {
+                console.log(response)
+            })
         } catch (error) {
             alert("Erro ao se candidatar. Tente novamente")
+            console.log(error)
         }
     }
 

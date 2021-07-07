@@ -30,7 +30,6 @@ export default function Profile(){
         })
     }, []);
 
-
     useEffect(() => {
         api.get('users/profile/announcements',{
             headers:{
