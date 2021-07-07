@@ -85,3 +85,17 @@
     line-height: 21px;
     font-size: 16px;
 }
+
+
+.button-ads {
+    background-color: #42FF00;
+    border: 0;
+    color: #000;
+    font-weight: 700;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 60px;
+    width: 220px;
+}

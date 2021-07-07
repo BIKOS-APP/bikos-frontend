@@ -64,7 +64,6 @@ export default function Profile(){
                 <img src={logoImg} alt="Be The Hero"/>
                 <span>Bem vindo, {userName}</span>
                 <Link className="button" to='/ads'>Quero prestar serviços</Link>
-                <Link className="button" to='/ads/new'>Cadastrar novo anuncio</Link>
                 <button onClick={handleLogout} type="button">
                     <FiPower size={18} color="#E02041"/>
                 </button>
@@ -86,7 +85,7 @@ export default function Profile(){
             </ul>
 
             <h1>Seus anúncios</h1>
-
+            <Link className="button-ads" to='/ads/new'>Cadastrar novo anuncio</Link>
             {ads.map(ad => (
              <ul>
                 <li key={ad.id}>
