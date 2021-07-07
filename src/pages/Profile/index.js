@@ -87,8 +87,8 @@ export default function Profile(){
 
             <h1>Seus anúncios</h1>
 
-            <ul>
-                {ads.map(ad => (
+            {ads.map(ad => (
+             <ul>
                 <li key={ad.id}>
                     <strong>Caso:</strong>
                     <p>{ad.title}</p>
@@ -108,10 +108,9 @@ export default function Profile(){
                     <button onClick={() => handleDeleteAd(ad.id)} type="button">
                         <FiTrash2 size={20} color="#a8a8b3"/>
                     </button>
-
                 </li>
-                ))} 
             </ul>
+            ))} 
         </div>
 
     );
