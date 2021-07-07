@@ -27,3 +27,17 @@
 #provider-img{
     margin-right: 0px;
 }
+
+.button-ads {
+    background-color: #42FF00;
+    border: 0;
+    color: #000;
+    font-weight: 700;
+    margin-top: 20px;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 60px;
+    width: 220px;
+}
