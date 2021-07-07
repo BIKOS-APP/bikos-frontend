@@ -45,36 +45,40 @@ export default function Profile(){
         <div className="profile-container">
             <header>
                 <img src={logoImg} alt="Be The Hero"/>
-                <span>Bem vindo, {userName}</span>
                 <Link className="button" to='/profile'>Meu perfil</Link>
             </header>
 
             <h1>Anúncios</h1>
+            {ads.map(ad => (
+                <ul>
+                
+                    <li key={ad.id}>
+                        
+                        <strong>Titulo:</strong>
+                        <p>{ad.title}</p>
 
-            <ul>
-                {ads.map(ad => (
-                <li key={ad.id}>
+                        <strong>Anunciante</strong>
+                        <p>{ad.name}</p>
 
-                    <p id="name">{ad.name}</p>
-                    
-                    <strong id="title">{ad.title}</strong>
+                        <strong>Descrição</strong>
+                        <p>{ad.category}</p>
 
-                    <p  id="cat">{ad.category}</p>
+                        <strong>Cidade</strong>
+                        <p>{ad.city}</p>
 
-                    <p>{ad.city}</p>
+                        <p>{ad.state}</p>
 
-                    <p>{ad.state}</p>
+                        <strong>Descrição</strong>
+                        <p>{ad.description}</p>
 
-                    <strong>Descrição</strong>
-                    <p>{ad.description}</p>
-
-                    <button onClick={() => handleApplyCandidate(ad.id)} type="button">
-                        Candidatar-se
-                    </button>
-                    
-                </li>
-                ))} 
-            </ul>
+                        <button className={"button-ads"} onClick={() => handleApplyCandidate(ad.id)} type="button">
+                            Candidatar-se
+                        </button>
+                        
+                    </li>
+                
+                </ul>
+            ))} 
         </div>
 
     );

@@ -89,7 +89,7 @@ export default function Profile(){
             {ads.map(ad => (
              <ul>
                 <li key={ad.id}>
-                    <strong>Caso:</strong>
+                    <strong>Titulo:</strong>
                     <p>{ad.title}</p>
 
                     <strong>Descrição</strong>
