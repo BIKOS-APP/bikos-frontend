@@ -10,6 +10,7 @@ export default function NewAd(){
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [city, setCity] = useState('');
+    const [district, setDistrict] = useState('');
     const [state, setState] = useState('');
     const [cat_id, setCatId] = useState('')
 
@@ -27,6 +28,7 @@ export default function NewAd(){
                 .then((res) => { 
                     setCity(res.data.localidade)
                     setState(res.data.uf)
+                    setDistrict(res.data.bairro)
                 })
         } catch (error) {
             console.log(error);
@@ -41,6 +43,7 @@ export default function NewAd(){
             title,
             description,
             city,
+            district,
             state,
             cat_id
         };
@@ -74,7 +77,9 @@ export default function NewAd(){
                 <form onSubmit={handleNewAd}
                         initialValues={{
                             city: '',
+                            district:'',
                             state: '',
+
                           }}
                 >
                     <input 
@@ -96,6 +101,13 @@ export default function NewAd(){
                     name="city"
                     value={city}
                     onChange={e => setCity(e.target.value)}
+                    disabled
+                    />
+                    <input 
+                    placeholder="Bairro"
+                    name="district"
+                    value={district}
+                    onChange={e => setDistrict(e.target.value)}
                     disabled
                     />
                     <input 
